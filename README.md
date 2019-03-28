@@ -1,3 +1,7 @@
+# First prototype of True Relief
+
+This prototype was developed for demo purposes at the begining of 2018. The new and improved prototype is available at https://github.com/perlajarillo/true-relief
+
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
 When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
