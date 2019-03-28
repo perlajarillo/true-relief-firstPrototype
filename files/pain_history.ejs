@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/jquery.bxslider.css">
+	<link rel="stylesheet" href="css/jquery.bxslider.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="css/set1.css" />
+	<link href="css/overwrite.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!-- Form validation -->
+    <script src="js/form_validations.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+       //reviewing if the patient had tried medication  
+        $(".medicationYes").click(function(){
+                $("#medication_div").show();
+            //    $("#medication_question_div").hide();
+        });
+        $(".medicationNo").click(function(){
+                $("#medication_div").hide();
+                 $("#procedure_question_div").show();
+             //    $("#medication_question_div").hide();
+        });
+        //reviewing if the patient had tried procedures  
+        $(".procedureYes").click(function(){
+                $("#procedures_div").show();
+             //   $("#medication_question_div").hide();
+        });
+        $(".procedureNo").click(function(){
+                 $("#procedures_div").hide();
+                 $("#non_pharmac_question_div").show();
+        });
+        //reviewing if the patient had tried non-pharmacological  
+        $(".non_pharmacYes").click(function(){
+                $("#non_pharmac_div").show();
+             //   $("#medication_question_div").hide();
+        });
+        $(".non_pharmacNo").click(function(){
+                 $("#non_pharmac_div").hide();
+                 $("#buttons_div").show();
+        });
+        //Actions after the patient chooses medication
+        $("#medication").change(function() {
+            $("#how_medication_worked_lbl").text("Have did "+$("#medication option:selected").text()+" work? *");
+            $("#how_medication_worked_div").show();
+        });  
+         $("#how_medication_worked").change(function() {
+            $("#procedure_question_div").show();
+        });  
+        //Actions after the patient chooses procedure
+         $("#procedure").change(function() {
+            $("#how_procedure_worked_lbl").text("Have did "+$("#procedure option:selected").text()+" work? *");
+            $("#how_procedure_worked_div").show();
+        }); 
+        $("#how_procedure_worked").change(function() {
+            $("#non_pharmac_question_div").show();
+        }); 
+        //Actions after the patient chooses non-pharmacological
+        $("#non_pharmac").change(function() {
+            $("#how_non_pharmac_worked_lbl").text("Have did "+$("#non_pharmac option:selected").text()+" work? *");
+            $("#how_non_pharmac_worked_div").show();
+        });
+        $("#how_non_pharmac_worked").change(function() {
+            $("#buttons_div").show();
+        });
+        //Actions when the patient choose its pain condition
+        $("#pain_condition").change(function() {
+            $("#how_long_lbl").text("How long have you had "+$("#pain_condition option:selected").text()+"? *");
+            $("#medication_lbl").text("Have you tried some medication for "+$("#pain_condition option:selected").text()+"? *");
+            $("#procedure_lbl").text("Have you tried any procedures for "+$("#pain_condition option:selected").text()+"? *");
+            $("#non_pharmac_lbl").text("Have you tried any non-pharmacological treatments for "+$("#pain_condition option:selected").text()+"? *");
+            $("#how_it_worked_div").show();
+            $("#medication_question_div").show();
+            });  
+   //Validating everythig is correct before sending the form
+ $("form").submit(function(){
+
+    var atLeastOneIsChecked = $('input:checked').length > 0;
+    if (!atLeastOneIsChecked)
+    {
+        $("#preferencesMsg").text("Please select at least one option!");
+        return false;
+    }
+    else
+    {
+        $("#preferencesMsg").text("");
+         return true;
+    }
+ });
+
+  });
+   
+    </script>
+
+  </head>
+  <body>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><span>True Relief App</span></a>
+			</div>
+			<div class="navbar-collapse collapse">							
+				<div class="menu">
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" ><a href="index.html">Home</a></li>
+						<li role="presentation" class="active"><a href="profile.html">Profile</a></li>
+						<li role="presentation"><a href="track_pain.html">Track pain</a></li>
+						<li role="presentation"><a href="tools.html">Tools</a></li>
+						<li role="presentation"><a href="local_providers.html">Local providers</a></li>
+						<li role="presentation"><a href="treatments_and_products.html">Treatments and products</a></li>
+						<li role="presentation"><a href="/logout">Log out</a></li>
+<!-- 						<li role="presentation"><a href="sign_in.html">Sign in</a></li>
+						<li role="presentation"><a href="sign_on.html">Sign on</a></li> -->
+					</ul>
+				</div>
+			</div>			
+		</div>
+	</nav>
+	
+	<div class="container">
+		<div class="row" >
+			<div class="service" >
+				<div>
+
+					<div class="text-center">
+                    Your progress:
+                    <progress max="100" value="40">
+                    <div class="progress-bar">
+                        <span style="width: 10%;">Progress: 40%</span>
+                    </div>
+                </progress>
+						<h2>Pain History</h2>
+						<h5>Now are going to ask questions about your pain as well as what makes it better or worse
+ and how you currently treated so we can come up with the best ideas for additional pain management:</h5>
+						</div> 			
+				</div>
+			</div>
+		</div>
+						        <div class="row contact-wrap"> 
+                <div class="status alert alert-success" style="display: none"></div>
+                <form id="pain-history-form" name="pain-history-form" class="contact-form" method="post" action="/ask_other_condition">
+                    <p id="preferencesMsg" class="p-validation"></p>
+
+                    <div >
+                    <div class="form-group" id="pain_condition_div" name="pain_condition_div">
+                        <p> What pain condition have you been diagnosed with?</p>
+                    <select name="pain_condition" id="pain_condition" class="form-control"><p id="painconditiongMsg" class="p-validation"></p>
+                    <option value="" disabled="True" selected="True">Select one option</option>
+                    <% conditions.forEach(function(condition) { %>
+                    <option value= <%= condition.id_condition %>><%= condition.pain_description_condition %></option>
+                    <% }); %>
+                    </select>
+                   </div>
+                    <div class="form-group" id="how_long_condition_div" name="how_long_condition_div" style="display: none">
+                            <label id="how_long_lbl" name="how_long_lbl">How long have you had this condition? *</label> <p id="howlongMsg" class="p-validation"></p>
+                            <select name="how_long_condition" id="how_long_condition" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                              <option value="Less than a month">Less than a month</option>
+                              <option value="1-3 months">1-3 months</option>
+                              <option value="3-6 months">3-6 months</option>
+                              <option value="6-11 months">6-11 months</option>
+                              <option value="1-2 years">1-2 years</option>
+                              <option value="More than two years">More than two years</option>
+
+                            </select>
+                    </div> 
+                    <div class="form-group" id="how_it_worked_div" name="how_it_worked_div" style="display: none">
+                        <h4>We want to know what you have tried for your pain and how it worked</h4>
+                        </div> 
+                         <div class="form-group" id="medication_question_div" name="medication_question_div" style="display: none">
+                            <label id="medication_lbl" name="medication_lbl">Have you tried some medication?*</label> <p id="medication_questionMsg" class="p-validation"></p>
+                            <input type="radio" name="medication_radio" value="1" class="medicationYes"> Yes 
+                             <input type="radio" name="medication_radio" value="0" class="medicationNo">   No
+                        </div>  
+
+                        <div class="form-group" id="medication_div" name="medication_div" style="display: none">
+                            <label id="medication_lbl" name="medication_lbl">Medication you have tried *</label> <p id="howlongMsg" class="p-validation"></p>
+                            <select name="medication" id="medication" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                              <option value="sedentary">medication 1</option>
+                              <option value="lightly active">medication 2</option>
+                              <option value="moderate">medication 3</option>
+                              <option value="very active">medication 4</option>
+                              <option value="extra active">medication 5</option>
+                              <option value="extra active">medication 6</option>
+                            </select>
+                           
+                        </div> 
+                        <div class="form-group" id="how_medication_worked_div" name="how_medication_worked_div" style="display: none">
+                            <label id="how_medication_worked_lbl" name="how_medication_worked_lbl">How did it work? *</label> <p id="how_medication_workedMsg" class="p-validation"></p>
+                            <select name="how_medication_worked" id="how_medication_worked" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                              <option value="effective">Effective</option>
+                              <option value="worked ok">Worked OK</option>
+                              <option value="did not worked">Did not worked</option>
+                            </select>   
+                        </div>
+                         <div class="form-group" id="procedure_question_div" name="procedure_question_div" style="display: none">
+                            <label id="procedure_lbl" name="procedure_lbl">Have you tried any procedure (surgery, injections...)?*</label> <p id="procedure_questionMsg" class="p-validation"></p>
+                            <input type="radio" name="procedure_radio" value="1" class="procedureYes"> Yes 
+                             <input type="radio" name="procedure_radio" value="0" class="procedureNo">  No
+                        </div> 
+
+                        <div class="form-group" id="procedures_div" name="procedures_div" style="display: none">
+                            <label id="procedures_lbl" name="procedures_lbl">Procedure you have tried *</label> <p id="howlongMsg" class="p-validation"></p>
+                            <select name="procedure" id="procedure" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                               <% procedures.forEach(function(procedure) { %>
+                                <option value= <%= procedure.id_procedure %>><%= procedure.procedure_name %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="form-group" id="how_procedure_worked_div" name="how_procedure_worked_div" style="display: none">
+                            <label id="how_procedure_worked_lbl" name="how_procedure_worked_lbl">How did it worked? *</label> <p id="how_procedure_workedMsg" class="p-validation"></p>
+                            <select name="how_procedure_worked" id="how_procedure_worked" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                              <option value="effective">Effective</option>
+                              <option value="worked ok">Worked OK</option>
+                              <option value="did not worked">Did not worked</option>
+                            </select>   
+                        </div> 
+                         <div class="form-group" id="non_pharmac_question_div" name="non_pharmac_question_div" style="display: none">
+                            <label id="non_pharmac_lbl" name="non_pharmac_lbl">Have you tried any non-pharmacological treatment?**</label> <p id="non_pharmac_questionMsg" class="p-validation"></p>
+                            <input type="radio" name="non_pharmac_radio" value="1" class="non_pharmacYes"> Yes 
+                             <input type="radio" name="non_pharmac_radio" value="0" class="non_pharmacNo">  No
+                        </div>
+                        <div class="form-group" id="non_pharmac_div" name="non_pharmac_div" style="display: none">
+                            <label id="non_pharmac_lbl" name="non_pharmac_lbl">Non pharmacological treatments you have tried *</label> <p id="howlongMsg" class="p-validation"></p>
+                            <select name="non_pharmac" id="non_pharmac" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                                <% non_pharmacs.forEach(function(non_pharmac) { %>
+                                <option value= <%= non_pharmac.id_non_pharma %>><%= non_pharmac.non_pharma_name %></option>
+                                <% }); %>
+                            </select>
+                        </div> 
+                        <div class="form-group" id="how_non_pharmac_worked_div" name="how_non_pharmac_worked_div" style="display: none">
+                            <label id="how_non_pharmac_worked_lbl" name="how_non_pharmac_worked_lbl">How did it worked? *</label> <p id="how_non_pharmac_workedMsg" class="p-validation"></p>
+                            <select name="how_non_pharmac_worked" id="how_non_pharmac_worked" class="form-control">
+                              <option value="" disabled="True" selected="True">Select one option</option>
+                              <option value="effective">Effective</option>
+                              <option value="worked ok">Worked OK</option>
+                              <option value="did not worked">Did not worked</option>
+                            </select>   
+                        </div> 
+                   <div class="form-group col-sm-8" id="buttons_div" name="buttons_div" style="display: none; text-align: right;">
+                            <button type="button" name="cancel" class="btn btn-primary btn-lg" style="margin-right: 20px;" onclick="cancelForm()" >Cancel</button>
+                            <button type="submit" name="submit" class="btn btn-primary btn-lg" >Next</button>
+                    </div>
+
+                </form> 
+           
+        </div><!--/.row-->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	
+
+	
+	<footer>
+		<div class="inner-footer">
+			
+			
+		<div class="last-div">
+			<div class="container">
+				<div class="row">
+					<div class="copyright">
+						© 2014 eNno Multi-purpose theme | <a target="_blank" href="http://bootstraptaste.com">Bootstraptaste</a>
+					</div>
+                    <!-- 
+                        All links in the footer should remain intact. 
+                        Licenseing information is available at: http://bootstraptaste.com/license/
+                        You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=eNno
+                    -->
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<ul class="social-network">
+						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a></li>
+						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a></li>
+						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin fa-1x"></i></a></li>
+						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest fa-1x"></i></a></li>
+						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus fa-1x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<a href="" class="scrollup"><i class="fa fa-chevron-up"></i></a>	
+		</div>			
+	</footer>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+ 
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.isotope.min.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="js/fliplightbox.min.js"></script>
+	<script src="js/functions.js"></script>
+	<script type="text/javascript">$('.portfolio').flipLightBox()</script>
+  </body>
+</html>
